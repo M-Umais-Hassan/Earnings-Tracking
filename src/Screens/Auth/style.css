@@ -1,0 +1,258 @@
+.auth__box {
+  width: 60%;
+  height: 400px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.auth__box .logo {
+  width: 100px;
+  height: 70px;
+}
+
+.auth__box .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+.auth__box #shape1 {
+  background-color: var(--primary-light);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 20%;
+  top: 10%;
+  transform: rotate(45deg);
+}
+
+.auth__box #shape2 {
+  background-color: var(--primary-light);
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 20%;
+  bottom: 20%;
+  transform: rotate(45deg);
+}
+
+.auth__box #shape3 {
+  background-color: var(--primary-light);
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: -7%;
+  top: 50%;
+  transform: rotate(35deg);
+}
+
+.auth__box #shape4 {
+  background-color: var(--primary-light);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  position: absolute;
+  left: -35%;
+  bottom: -35%;
+}
+
+.auth__box #box__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth__box .radio__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth__box input[type="radio"] {
+  width: 100%;
+}
+
+.auth__box #box__left,
+.auth__box #box__right {
+  padding: 10px;
+}
+
+.auth__box #box__left {
+  flex: 40%;
+  background-color: var(--primary);
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+.auth__box #box__right {
+  flex: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#auth__sidebar__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 40px);
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+#auth__sidebar__inner h6 {
+  text-align: justify;
+  width: 80%;
+  margin: auto;
+  font-weight: normal;
+}
+
+#auth__sidebar__inner button {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px 0;
+  border: 2px solid white;
+  color: white;
+  border-radius: 25px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.auth__box #box__right h2 {
+  text-align: center;
+  color: var(--primary);
+}
+
+.auth__box input[type="text"],
+.auth__box input[type="email"],
+.auth__box input[type="password"] {
+  width: calc(100% - 40px);
+  padding: 10px 20px;
+  border: 1px solid var(--primary);
+}
+
+.auth__box #box__right #signin__btns {
+  display: flex;
+  justify-content: center;
+}
+
+.auth__box #box__right #signin__btns button {
+  margin: 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: none;
+  background: none;
+  border: 1px solid black;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.auth__box input,
+button#signup {
+  margin: 10px 0;
+}
+
+.auth__box #auth_btn {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button#signin {
+  position: relative;
+  width: 120px;
+  background-color: var(--primary);
+  padding: 10px;
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+/* verify email */
+
+.verify__email__page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--primary-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.verify__email__page .verify__email__box {
+  background-color: white;
+  padding: 50px 20px;
+  border-radius: 10px;
+  width: 40%;
+  text-align: center;
+  color: var(--primary);
+  margin: 50px 0;
+}
+
+.verify__email__box svg {
+  font-size: 50px;
+}
+
+.verify__email__box p {
+  color: var(--txtBlack);
+}
+
+@media screen and (max-width: 1024px) {
+  .auth__box {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .auth__box {
+    flex-direction: column;
+    height: 90vh;
+  }
+  .auth__box #box__left {
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .auth__box {
+    width: 95%;
+  }
+  .auth__box .logo {
+    width: 60px;
+    height: 40px;
+  }
+}
