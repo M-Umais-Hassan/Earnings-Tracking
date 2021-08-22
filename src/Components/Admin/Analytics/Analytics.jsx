@@ -38,6 +38,7 @@ const Analytics = ({ workerCount, projectCount }) => {
             },
         ]
     }
+
     return (
         <div className="section">
             <div className="analytics__flex">
@@ -52,7 +53,7 @@ const Analytics = ({ workerCount, projectCount }) => {
                     <Bar data={barData} />
                 </div>
             </div>
-        </div>
+        </div> 
     )
 }
 

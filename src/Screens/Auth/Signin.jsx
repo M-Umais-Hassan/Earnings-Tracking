@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
-
-// components
-import Authsidebar from './Authsidebar';
 
 // firebase
 import { auth } from '../../firebase';
@@ -47,27 +45,29 @@ const Signin = () => {
   return (
       <div className="auth__box">
         <div id="box__left">
-          <Authsidebar headline="Don't Have Account" btnName="Sign Up" path="/signup" />
-        </div>
-        <div id="box__right">
-          <h2>Login</h2>
-          <div id="error">{error && error}</div>
-          <form onSubmit={formik.handleSubmit}>
-            <div>
-                <input type="email" placeholder="Email" id="email" name="email" {...formik.getFieldProps('email')} />
-                {formik.touched.email && formik.errors.email 
-                ? <div id="error">{formik.errors.email}</div> : null}
-            </div>
-            <div>
-              <input type="password" placeholder="Password" id="password" name="password" {...formik.getFieldProps('password')} />
-              {formik.touched.password && formik.errors.password 
-              ? <div id="error">{formik.errors.password}</div> : null}
-            </div>
-            <div id="auth_btn">
+          <div className="inner__box">
+            <h1>Login</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores quam magni error</p>
+            <div id="error">{error && error}</div>
+            <form onSubmit={formik.handleSubmit}>
+              <h2>Email</h2>
+              <div>
+                  <input type="email" placeholder="Your email@gmail.com" id="email" name="email" {...formik.getFieldProps('email')} />
+                  {formik.touched.email && formik.errors.email 
+                  ? <div id="error">{formik.errors.email}</div> : null}
+              </div>
+              <h2>Password</h2>
+              <div>
+                <input type="password" placeholder="Your Password" id="password" name="password" {...formik.getFieldProps('password')} />
+                {formik.touched.password && formik.errors.password 
+                ? <div id="error">{formik.errors.password}</div> : null}
+              </div>
+              <h4>Don't have an account? <Link to="/signup">Register</Link></h4>
               <button id="signin" type="submit" disabled={loading}>{loading ? "Loading..." : "Login"}</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
+        <div id="box__right"></div>
       </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import './home.style.css';
 
 // components
 import GetStarted from '../../Components/Home/GetStarted';

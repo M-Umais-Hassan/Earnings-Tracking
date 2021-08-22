@@ -3,21 +3,18 @@ import React, { useContext } from 'react';
 // firebase
 import { auth } from '../../firebase';
 
-// context
-import userContext from '../../Context/userContext';
-
 // components
 import Nav from '../../Components/Navbar/Nav';
 import Analytics from '../../Components/Worker/Analytics/Analytics';
+import Table from '../../Components/Worker/Analytics/Table';
 
 const WorkerDashboard = () => {
-    const { userData, setUserData } = useContext(userContext);
-
     return (
         <>
-            <Nav heading={'Logo'} />
+            <Nav heading={'Earnings Tracking'} />
             <div className="container">
                 <Analytics />
+                <Table />
             </div>
         </>
     )
