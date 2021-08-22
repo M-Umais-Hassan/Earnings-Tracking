@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
 // components
@@ -30,8 +30,8 @@ const Signin = () => {
     await auth
     .signInWithEmailAndPassword(formik.values.email, formik.values.password)
     .then(() => {
-      // console.log('Logged in');
       setLoading(false);
+
     }).catch((err) => {
       setError(err.message);
       setLoading(false);
@@ -47,11 +47,7 @@ const Signin = () => {
   return (
       <div className="auth__box">
         <div id="box__left">
-          <Authsidebar
-            headline="Don't Have Account"
-            btnName="Sign Up"
-            path="/Signup"
-          />
+          <Authsidebar headline="Don't Have Account" btnName="Sign Up" path="/signup" />
         </div>
         <div id="box__right">
           <h2>Login</h2>
@@ -68,7 +64,7 @@ const Signin = () => {
               ? <div id="error">{formik.errors.password}</div> : null}
             </div>
             <div id="auth_btn">
-              <button id="signin" type="submit" disabled={loading}>{loading ? "Loading..." : "Signup"}</button>
+              <button id="signin" type="submit" disabled={loading}>{loading ? "Loading..." : "Login"}</button>
             </div>
           </form>
         </div>

@@ -9,6 +9,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -19,18 +20,26 @@ function App() {
         userRef.on('value', (snapshot) => {
           setUserData(snapshot.val());
           setLoading(false);
+          if(snapshot.val().admin) {
+            setIsAdmin(true);
+          }
+          else {
+            setIsAdmin(false);
+          }
         });
       }
       else {
         setIsAuthenticated(false);
         setLoading(false);
+        setIsAdmin(false);
       }
     })
+    console.log(isAdmin);
   }, []);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
-        <Routes isAuthenticated={isAuthenticated} loading={loading} />
+        <Routes isAuthenticated={isAuthenticated} loading={loading} isAdmin={isAdmin} />
     </UserContext.Provider>
   );
 }

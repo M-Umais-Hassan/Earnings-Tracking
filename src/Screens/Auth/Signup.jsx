@@ -35,10 +35,14 @@ const Signup = () => {
       const ref = db.ref();
       const users = ref.child(`Users/${auth.currentUser.uid}`);
       await users.set({ 
-        earnings: 0,
         email: formik.values.email, 
         name: formik.values.name,
-        projects: []
+        projects: [
+          {name: 'Project 1', earning: 10},
+          {name: 'Project 2', earning: 20},
+          {name: 'Project 3', earning: 10}
+        ],
+        admin: false
       })
       .then(() =>{
         alert('Account created successfully');
@@ -64,7 +68,7 @@ const Signup = () => {
   return (
     <div className="auth__box">
         <div id="box__left">
-          <Authsidebar headline="Welcome Back" btnName="Login" path="/Signin" />
+          <Authsidebar headline="Welcome Back" btnName="Login" path="/signin" />
         </div>
         <div id="box__right">
           <h2>Create Account</h2>
