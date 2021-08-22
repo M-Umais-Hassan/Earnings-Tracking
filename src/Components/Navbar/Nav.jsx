@@ -7,7 +7,7 @@ import userContext from '../../Context/userContext';
 // firebase
 import { auth } from '../../firebase';
 
-const Nav = () => {
+const Nav = ({ heading }) => {
     const { userData, setUserData } = useContext(userContext);
 
     const handleSignout= () => {
@@ -18,7 +18,7 @@ const Nav = () => {
     return (
         <div className="nav">
             <div id="logo">
-                <h1>Admin Dashboard</h1>
+                <h1>{heading}</h1>
             </div>
             <ul>
                 <li><button id="logout" onClick={handleSignout}>Logout</button></li>

@@ -20,7 +20,7 @@ function App() {
         userRef.on('value', (snapshot) => {
           setUserData(snapshot.val());
           setLoading(false);
-          if(snapshot.val().admin) {
+          if(snapshot.val().admin && snapshot.val().admin === true) {
             setIsAdmin(true);
           }
           else {

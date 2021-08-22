@@ -7,16 +7,17 @@ import { auth } from '../../firebase';
 import userContext from '../../Context/userContext';
 
 // components
-import Nav from '../../Components/Worker/Navbar/Nav';
+import Nav from '../../Components/Navbar/Nav';
+import Analytics from '../../Components/Worker/Analytics/Analytics';
 
 const WorkerDashboard = () => {
     const { userData, setUserData } = useContext(userContext);
 
     return (
         <>
-            <Nav />
+            <Nav heading={'Logo'} />
             <div className="container">
-                <h1>Dashboard</h1>
+                <Analytics />
             </div>
         </>
     )

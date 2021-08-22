@@ -35,3 +35,21 @@ ul {
   width: 80%;
   margin: auto;
 }
+
+.section {
+  margin: 50px 0;
+}
+
+.analytics__flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.center {
+  text-align: center;
+}
