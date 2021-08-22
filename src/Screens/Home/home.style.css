@@ -1,0 +1,74 @@
+.home__screen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../Assets/bg/bg.jpg"),
+    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5));
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--txtWhite);
+}
+
+.top__nav {
+  width: calc(100% - 100px);
+  height: 70px;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home__screen ul {
+  display: flex;
+  align-items: center;
+}
+
+.home__screen ul li {
+  margin: 0 20px;
+  transition: all 0.5s ease;
+}
+
+.home__screen ul li:hover {
+  opacity: 0.9;
+  transform: scale(0.9);
+}
+
+.home__screen ul li a {
+  color: var(--txtWhite);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.home__screen ul li:last-child {
+  background-color: var(--primary);
+  padding: 5px 20px;
+  border-radius: 25px;
+}
+
+.home__screen .hero__txt {
+  color: var(--txtWhite);
+  font-size: 30px;
+  position: absolute;
+  top: 60%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.home__screen .hero__txt button {
+  background-color: var(--primary);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 30px;
+  margin: 40px 0;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.home__screen .hero__txt button:hover {
+  opacity: 0.9;
+  transform: scale(1.2);
+}
+
+.home__screen .hero__txt button a {
+  color: var(--txtWhite);
+}
