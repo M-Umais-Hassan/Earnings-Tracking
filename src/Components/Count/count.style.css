@@ -23,3 +23,25 @@ hr {
   color: var(--primary);
   font-size: 70px;
 }
+
+@media screen and (max-width: 1024px) {
+  .count {
+    width: 50%;
+    margin: 50px 0;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .count {
+    width: 80%;
+    padding: 25px;
+  }
+  .count h1.label {
+    font-size: 30px;
+  }
+
+  .count h1.number {
+    color: var(--primary);
+    font-size: 50px;
+  }
+}

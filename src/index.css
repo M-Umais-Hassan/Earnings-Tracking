@@ -15,6 +15,7 @@ code {
 
 :root {
   --primary: #6a5acd;
+  --primary2: #e77453;
   --primary-light: #958adb;
   --txtWhite: #ffffff;
   --txtBlack: #000000;
@@ -44,16 +45,17 @@ a {
   margin: 50px 0;
 }
 
-.analytics__flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .primary {
   color: var(--primary);
 }
 
 .center {
   text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 90%;
+    margin: auto;
+  }
 }

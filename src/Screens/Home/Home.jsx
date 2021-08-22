@@ -1,23 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './home.style.css';
+
+// components
+import GetStarted from '../../Components/Home/GetStarted';
+import Features from '../../Components/Home/Features';
+import Services from '../../Components/Home/Services';
+import Footer from '../../Components/Home/Footer';
 
 const Home = () => {
     return (
         <div className="home__screen">
-            <div className="top__nav">
-                <div className="logo">
-                    <h1>Earnings Tracking</h1>
-                </div>
-                <ul>
-                    <li><Link to="/signin">Login</Link></li>
-                    <li><Link to="/signup">Register</Link></li>
-                </ul>
-            </div>
-            <div className="hero__txt">
-                <h1>Track your earnings</h1>
-                <button><Link to="signup">Get Started</Link></button>
-            </div>
+            <GetStarted />
+            <Features />
+            <Services />
+            <Footer />
         </div>
     )
 }

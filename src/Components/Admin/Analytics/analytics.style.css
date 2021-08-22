@@ -1,3 +1,9 @@
+.analytics__flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .chart__area {
   width: 100%;
   display: flex;
@@ -10,4 +16,34 @@
   height: 400px;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .chart__area,
+  .analytics__flex {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .chart__area .chart {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .chart__area .chart {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .chart__area .chart {
+    width: 200px;
+    height: 200px;
+  }
 }

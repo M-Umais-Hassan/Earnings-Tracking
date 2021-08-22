@@ -11,6 +11,7 @@ import userContext from '../../Context/userContext';
 
 // firebase
 import { db, auth } from '../../firebase';
+import Loading from '../../Components/Loader/Loading';
 
 const AdminDashboard = () => {
     const { userData, setUserData } = useContext(userContext);
@@ -21,12 +22,13 @@ const AdminDashboard = () => {
 
     useEffect(() => {
         let count = 0;
+        let wCount = 0;
         setLoading(true);
         const usersRef = db.ref('Users');
         usersRef.on('value', async snapshot => {
-            setWorkerCount(snapshot.numChildren());
             for(let i=0; i<snapshot.numChildren(); i++) {
                 if(!(Object.values(snapshot.val()))[i].admin) {
+                    wCount++;
                     if((Object.values(snapshot.val()))[i].projects) {
                         for(let j=0; j<(Object.values(snapshot.val()))[i].projects.length; j++){
                             count++;
@@ -34,6 +36,7 @@ const AdminDashboard = () => {
                     }
                 }
             }
+            setWorkerCount(wCount);
             setProjectCount(count);
             setAllUsers(Object.values(snapshot.val()));
             setLoading(false);
@@ -43,11 +46,11 @@ const AdminDashboard = () => {
     return (
         <div>
             <Nav heading={'Admin Panel'} />
-
+            {loading ? <Loading /> : 
             <div className="container">
                 <Analytics workerCount={workerCount} projectCount={projectCount} />
                 <Table allUsers={allUsers} />
-            </div>
+            </div>}
         </div>
     )
 }
