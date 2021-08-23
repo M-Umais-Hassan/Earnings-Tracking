@@ -11,10 +11,11 @@ import Loading from '../Components/Loader/Loading';
 import Signin from '../Screens/Auth/Signin';
 import Signup from '../Screens/Auth/Signup';
 import Home from "../Screens/Home/Home";
+// Worker
 import WorkerDashboard from '../Screens/Worker/WorkerDashboard';
+import Profile from "../Screens/Worker/Profile";
 // admin
 import AdminDashboard from '../Screens/Admin/AdminDashboard';
-
 
 const Routes = ({ isAuthenticated, isAdmin, loading }) => {
   return (
@@ -24,7 +25,10 @@ const Routes = ({ isAuthenticated, isAdmin, loading }) => {
         <PublicRoute path="/" component={Home} exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         <PublicRoute path="/signin" component={Signin} exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         <PublicRoute path="/signup" component={Signup} exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
-        <PrivateRoute path="/dashboard" component={isAdmin ? AdminDashboard : WorkerDashboard}exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+        {/* <PrivateRoute path="/dashboard" component={isAdmin ? AdminDashboard : WorkerDashboard}exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} /> */}
+        <PrivateRoute path="/workerDashboard" component={WorkerDashboard}exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+        <PrivateRoute path="/adminDashboard" component={AdminDashboard}exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+        <PrivateRoute path="/profile" component={Profile}exact={true} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         <Route path="*" exact={true} component={PageNotFound} />
       </Switch>
     </Router>

@@ -1,0 +1,103 @@
+.form__box {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  background-image: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0),
+      rgba(60, 134, 167, 0.95)
+    ),
+    url("../../../Assets/bg/bg.jpg");
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.form__box #error {
+  color: red;
+  text-align: left;
+  font-weight: bold;
+}
+
+.form__box #box__left {
+  flex: 100%;
+}
+
+.form__box #box__left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__box #box__left .inner__box {
+  width: 60%;
+  padding: 5px;
+}
+
+.form__box #box__left .inner__box h1 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.form__box #box__left .inner__box p {
+  font-size: 16px;
+  color: white;
+  margin: 5px 0;
+}
+
+.form__box #box__left .inner__box h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form__box #box__left .inner__box input {
+  width: calc(100% - 20px);
+  padding: 20px 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+}
+
+.PhoneInputCountry {
+  padding: 20px 10px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+  background-color: white;
+}
+
+.PhoneInputCountrySelectArrow {
+  color: var(--primary2);
+}
+
+.form__box #box__left .inner__box button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 4px;
+  color: var(--txtWhite);
+  background-color: var(--primary2);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.form__box #box__left .inner__box button:hover {
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 770px) {
+  .form__box {
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .form__box #box__left .inner__box {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .form__box #box__left .inner__box {
+    width: 90%;
+  }
+}

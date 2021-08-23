@@ -7,10 +7,10 @@ const PublicRoute = ({ isAuthenticated, isAdmin, component: Component, ...restPr
         <Route
             {...restProps}
             component={(props) =>
-                isAuthenticated
-                ? <Redirect to="/dashboard" /> 
-                // : isAuthenticated && localStorage.getItem('userType') === 'Client' 
-                // ? <Redirect to="/Findtalent" /> 
+                isAuthenticated && isAdmin
+                ? <Redirect to="/adminDashboard" /> 
+                : isAuthenticated && !isAdmin 
+                ? <Redirect to="/workerDashboard" /> 
                 : <Component {...props} />
             }
         />

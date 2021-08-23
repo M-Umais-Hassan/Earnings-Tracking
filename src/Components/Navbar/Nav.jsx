@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './nav.style.css';
 
 // context
@@ -7,8 +8,12 @@ import userContext from '../../Context/userContext';
 // firebase
 import { auth } from '../../firebase';
 
+// icons
+import { MdKeyboardArrowDown } from 'react-icons/md'
+
 const Nav = ({ heading }) => {
     const { userData, setUserData } = useContext(userContext);
+    const [profileMenu, setProfileMenu] = useState(false);
 
     const handleSignout= () => {
         auth.signOut();
@@ -21,7 +26,11 @@ const Nav = ({ heading }) => {
                 <h1>{heading}</h1>
             </div>
             <ul>
-                <li><button id="logout" onClick={handleSignout}>Logout</button></li>
+                {!userData.isAdmin
+                    ? <li><Link to="/profile">Profile</Link></li> 
+                    : null
+                }
+                <li onClick={handleSignout}>Logout</li>
             </ul>
         </div>
     )

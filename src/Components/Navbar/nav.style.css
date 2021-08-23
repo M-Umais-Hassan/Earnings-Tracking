@@ -9,17 +9,27 @@
   color: var(--txtWhite);
 }
 
-#logout {
-  padding: 10px 20px;
-  background-color: white;
-  cursor: pointer;
-  transition: all 0.5s ease;
-  font-weight: bold;
+.nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#logout:hover {
-  transform: scale(0.9);
-  opacity: 0.9;
+.nav ul li {
+  margin: 0 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.nav ul li:hover {
+  transform: scale(1.1);
+}
+
+.nav ul li,
+.nav ul li a {
+  color: var(--txtWhite);
 }
 
 @media screen and (max-width: 510px) {
@@ -35,9 +45,6 @@
   }
   .nav h1 {
     font-size: 20px;
-  }
-  #logout {
-    padding: 5px 10px;
   }
 }
 
