@@ -19,6 +19,7 @@ function App() {
         const userRef = db.ref(`Users/${user.uid}`);
         userRef.on('value', (snapshot) => {
           setUserData(snapshot.val());
+          console.log('User data changed')
           setLoading(false);
           if(snapshot.val().admin && snapshot.val().admin === true) {
             setIsAdmin(true);
@@ -32,9 +33,9 @@ function App() {
         setIsAuthenticated(false);
         setLoading(false);
         setIsAdmin(false);
+        auth.signOut();
       }
     })
-    console.log(isAdmin);
   }, []);
 
   return (

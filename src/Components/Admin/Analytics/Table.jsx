@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './table.style.css';
 
 const Table = ({ allUsers }) => {
@@ -14,13 +15,13 @@ const Table = ({ allUsers }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {allUsers && allUsers.map((user, index) => {
+                    {allUsers && allUsers.map((user) => {
                         return (
                             !user.admin ?
                             <tr key={user.id}>
-                                <td>{user.name && user.name}</td>
+                                <td><Link to={`/detail/${user.id}`}>{user.name && user.name}</Link></td>
                                 <td>{user.email && user.email}</td>
-                                <td>{user.projects && user.projects.length}</td>
+                                <td>{user.projects ? user.projects.length : 0}</td>
                                 <td>{user.earnings ? user.earnings : 0}</td>
                             </tr> : null
                         )

@@ -7,10 +7,8 @@ const PublicRoute = ({ isAuthenticated, isAdmin, component: Component, ...restPr
         <Route
             {...restProps}
             component={(props) =>
-                isAuthenticated && isAdmin
-                ? <Redirect to="/adminDashboard" /> 
-                : isAuthenticated && !isAdmin 
-                ? <Redirect to="/workerDashboard" /> 
+                isAuthenticated
+                ? <Redirect to="/dashboard" /> 
                 : <Component {...props} />
             }
         />

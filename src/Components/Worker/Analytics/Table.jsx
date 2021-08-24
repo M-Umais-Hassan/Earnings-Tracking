@@ -1,11 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import '../../Admin/Analytics/table.style.css';
 
 // context
 import userContext from '../../../Context/userContext';
 
+// firebase
+import { db } from '../../../firebase';
+
 const Table = () => {
     const { userData } = useContext(userContext);
+    const [projectsData, setProjectsData] = useState([]);
+
+    useEffect(() => {
+        if(userData.id){
+            const ref = db.ref('Projects');
+            const projectRef = db.ref(`Projects/${userData.id}`);
+            ref.on('value', snapshot => {
+                if(snapshot.hasChild(userData.id)) {
+                    projectRef.on('value', snapshot => {
+                        setProjectsData(Object.values(snapshot.val()))
+                    })
+                }
+            })
+        }
+    }, [userData])
+
     return (
         <div className="table__scroll">
             <table>
@@ -17,7 +36,7 @@ const Table = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {userData && !userData.admin && userData.projects && userData.projects.map((project, index) => {
+                    {userData && !userData.admin && projectsData && projectsData.map((project, index) => {
                         return (
                             <tr key={index}>
                                 <td>{index}</td>

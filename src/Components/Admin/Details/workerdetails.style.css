@@ -1,0 +1,118 @@
+.worker__details__sec {
+  margin: 50px 0;
+  width: calc(100% - 120px);
+  padding: 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: var(--primary-light);
+  /* color: var(--txtWhite); */
+  position: relative;
+  text-align: justify;
+  display: flex;
+}
+
+.worker__details__sec .updated__profile__status,
+.worker__details__sec .notupdated__profile__status {
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  color: var(--txtWhite);
+}
+
+.worker__details__sec .notupdated__profile__status {
+  background-color: red;
+  width: 160px;
+}
+
+.worker__details__sec .updated__profile__status {
+  background-color: green;
+  width: 130px;
+}
+
+.worker__details__sec .block {
+  flex: 40%;
+  padding: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 30px;
+  text-align: center;
+}
+
+.worker__details__sec .block svg {
+  font-size: 100px;
+  color: var(--primary);
+}
+
+.worker__details__sec .block #line {
+  height: 1px;
+  width: 100%;
+  margin: 10px 0;
+  background-color: var(--primary);
+}
+
+.worker__details__sec .block h1 {
+  font-size: 22px;
+}
+
+.worker__details__sec .block span {
+  color: var(--primary);
+}
+
+@media screen and (max-width: 1325px) {
+  .worker__details__sec {
+    width: calc(100% - 80px);
+    padding: 60px 40px;
+  }
+  .worker__details__sec .block {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .worker__details__sec {
+    width: calc(100% - 40px);
+    padding: 60px 20px;
+  }
+  .worker__details__sec .block h1 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .worker__details__sec {
+    flex-direction: column;
+  }
+  .worker__details__sec .block {
+    margin: 30px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .worker__details__sec {
+    width: calc(100% - 40px);
+    padding: 30px 20px;
+  }
+  .worker__details__sec .block h1 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .worker__details__sec {
+    width: calc(100% - 20px);
+    padding: 30px 10px;
+  }
+  .worker__details__sec .block h1 {
+    font-size: 14px;
+  }
+}

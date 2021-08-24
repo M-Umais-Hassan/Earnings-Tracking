@@ -9,11 +9,11 @@ import userContext from '../../Context/userContext';
 import { auth } from '../../firebase';
 
 // icons
-import { MdKeyboardArrowDown } from 'react-icons/md'
+import { AiFillCaretDown } from 'react-icons/ai'
 
 const Nav = ({ heading }) => {
     const { userData, setUserData } = useContext(userContext);
-    const [profileMenu, setProfileMenu] = useState(false);
+    const [menu, setMenu] = useState(false);
 
     const handleSignout= () => {
         auth.signOut();
@@ -25,11 +25,16 @@ const Nav = ({ heading }) => {
             <div id="logo">
                 <h1>{heading}</h1>
             </div>
-            <ul>
-                {!userData.isAdmin
+            <div id="menu__btn" onClick={() => setMenu(!menu)}>
+                <span>{userData.name}</span>
+                <AiFillCaretDown />
+            </div>
+            <ul className={menu ? "show" : ""}>
+                {userData && !userData.admin
                     ? <li><Link to="/profile">Profile</Link></li> 
                     : null
                 }
+                <div id="line"></div>
                 <li onClick={handleSignout}>Logout</li>
             </ul>
         </div>

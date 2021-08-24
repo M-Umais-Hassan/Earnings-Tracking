@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useHistory } from 'react-router-dom';
 
 // components
 import Nav from '../../Components/Navbar/Nav';
@@ -10,7 +9,7 @@ import Table from '../../Components/Admin/Analytics/Table';
 import userContext from '../../Context/userContext';
 
 // firebase
-import { db, auth } from '../../firebase';
+import { db } from '../../firebase';
 import Loading from '../../Components/Loader/Loading';
 
 const AdminDashboard = () => {
@@ -21,6 +20,7 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        console.log('admin dashboard useeffect')
         let count = 0;
         let wCount = 0;
         setLoading(true);
@@ -28,20 +28,22 @@ const AdminDashboard = () => {
         usersRef.on('value', async snapshot => {
             for(let i=0; i<snapshot.numChildren(); i++) {
                 if(!(Object.values(snapshot.val()))[i].admin) {
+                    const uid = Object.values(snapshot.val())[i].id;
                     wCount++;
-                    if((Object.values(snapshot.val()))[i].projects) {
-                        for(let j=0; j<(Object.values(snapshot.val()))[i].projects.length; j++){
-                            count++;
+                    const projectsRef = await db.ref(`Projects/${uid}`);
+                    await projectsRef.on('value', snapshot => {
+                        if(snapshot.val()){
+                            count += Object.values(snapshot.val()).length;
+                            setProjectCount(count);
                         }
-                    }
+                    })
                 }
             }
             setWorkerCount(wCount);
-            setProjectCount(count);
             setAllUsers(Object.values(snapshot.val()));
             setLoading(false);
         });
-    }, []);
+    }, [userData]);
     
     return (
         <div>

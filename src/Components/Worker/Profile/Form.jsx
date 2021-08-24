@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './form.style.css';
 
 // phone input
@@ -15,6 +16,7 @@ const Form = () => {
     const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
     const getDate = () => {
         var date = new Date();
@@ -28,10 +30,9 @@ const Form = () => {
         setPhone('');
     }
 
-    const handleSubmit = async (firstName, lastName, phone) => {
+    const handleProfileSubmit = async (firstName, lastName, phone) => {
         if(firstName && lastName && phone) {
             setError('');
-            console.log(firstName, lastName, phone)
             setLoading(true);
             const ref = db.ref();
             const users = await ref
@@ -46,6 +47,7 @@ const Form = () => {
             .then(() =>{
                 alert('Data Uploaded Successfully');
                 setLoading(false);
+                history.push('/dashboard')
             })
             .catch((err) => {
                 auth.signOut();
@@ -103,7 +105,7 @@ const Form = () => {
                             onChange={setPhone}
                         />
                     </div>
-                    <button id="signin" type="submit" onClick={() => handleSubmit(firstName, lastName, phone)}>
+                    <button id="signin" onClick={() => handleProfileSubmit(firstName, lastName, phone)}>
                         {loading ? "Loading..." : "Submit"}
                     </button>
                 </div>

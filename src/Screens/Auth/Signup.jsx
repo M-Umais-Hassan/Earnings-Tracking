@@ -42,11 +42,6 @@ const Signup = () => {
         id: auth.currentUser.uid,
         email: formik.values.email, 
         name: formik.values.name,
-        projects: [
-          {name: 'Project 1', earning: 10},
-          {name: 'Project 2', earning: 20},
-          {name: 'Project 3', earning: 10}
-        ],
         admin: false,
         createdAt: getDate()
       })
