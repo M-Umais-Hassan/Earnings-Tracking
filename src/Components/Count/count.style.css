@@ -1,26 +1,29 @@
 .count {
-  /* width: 250px; */
   width: 100%;
   padding: 25px 50px;
   margin: 0 50px;
   box-shadow: 0px 2px 15px 0px rgb(0 0 0 / 16%);
-  border-radius: 10px;
-  text-align: center;
-  background-color: white;
+  border-radius: 5px;
+  background-color: var(--block-color);
+  color: var(--txtWhite);
 }
 
-hr {
-  height: 1px;
-  background-color: var(--primary);
-  border: none;
+.count svg {
+  font-size: 70px;
+}
+
+.count .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .count h1.label {
-  font-size: 40px;
+  font-size: 26px;
+  font-weight: normal;
 }
 
 .count h1.number {
-  color: var(--primary);
   font-size: 70px;
 }
 
@@ -41,7 +44,9 @@ hr {
   }
 
   .count h1.number {
-    color: var(--primary);
+    font-size: 50px;
+  }
+  .count svg {
     font-size: 50px;
   }
 }

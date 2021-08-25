@@ -9,14 +9,14 @@ import userContext from '../../../Context/userContext';
 // firebase
 import { db } from '../../../firebase';
 
-const Analytics = () => {
+const Analytics = ({ setLoading }) => {
     const { userData } = useContext(userContext);
     const [projectCount, setProjectCount] = useState(0);
     const [earningsCount, setEarningsCount] = useState(0);
     
     useEffect(() => {
         if(userData.id){
-            console.log('worker analytics use effect')
+            setLoading(true);
             let count = 0;
             const ref = db.ref('Projects');
             const projectRef = db.ref(`Projects/${userData.id}`);
@@ -28,6 +28,7 @@ const Analytics = () => {
                             count += parseInt(Object.values(snapshot.val())[i].earning);
                             setEarningsCount(count);
                         }
+                        setLoading(false);
                     })
                 }
             })

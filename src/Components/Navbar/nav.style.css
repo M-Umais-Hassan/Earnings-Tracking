@@ -65,6 +65,10 @@ ul.show {
 }
 
 @media screen and (max-width: 510px) {
+  .nav {
+    width: calc(100% - 40px);
+    padding: 0 20px;
+  }
   .nav h1 {
     font-size: 24px;
   }
@@ -78,9 +82,16 @@ ul.show {
   .nav h1 {
     font-size: 20px;
   }
+  .nav #menu__btn span {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 330px) {
+  .nav {
+    width: calc(100% - 20px);
+    padding: 0 10px;
+  }
   .nav h1 {
     font-size: 16px;
   }

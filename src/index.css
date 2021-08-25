@@ -14,9 +14,10 @@ code {
 }
 
 :root {
-  --primary: #6a5acd;
+  --primary: #4cb050;
   --primary2: #e77453;
-  --primary-light: #958adb;
+  --primary-light: #82c984;
+  --block-color: #4cb050;
   --txtWhite: #ffffff;
   --txtBlack: #000000;
   --bgColor: #fafafa;

@@ -9,7 +9,7 @@ const GetStarted = () => {
     return (
         <div className="get__started">
             <div className="logo">
-                <h1>Earnings Tracking</h1>
+                <h1>Bitrix24portal</h1>
             </div>
             <div className="hero__text">
                 <h1>Work from home, office <br /> or on the go</h1>

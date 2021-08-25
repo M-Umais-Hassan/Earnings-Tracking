@@ -61,7 +61,7 @@
   padding: 20px;
   border-radius: 4px;
   color: var(--txtWhite);
-  background-color: var(--primary2);
+  background-color: var(--primary);
   cursor: pointer;
   transition: all 0.5s ease;
 }

@@ -15,8 +15,8 @@ const Analytics = ({ workerCount, projectCount }) => {
                 label: 'Workers and Projects',
                 data: [workerCount, projectCount],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 205, 86, 1)',
+                    'rgb(94, 186, 97)',
+                    'rgb(38, 89, 40)',
                 ]
             },
         ]
@@ -28,12 +28,12 @@ const Analytics = ({ workerCount, projectCount }) => {
                 label: 'Workers and Projects',
                 data: [workerCount, projectCount],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 205, 86, 1)',
+                    'rgb(94, 186, 97)',
+                    'rgb(38, 89, 40)',
                 ],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 205, 86, 1)',
+                    'rgb(94, 186, 97)',
+                    'rgb(38, 89, 40)',
                 ]
             },
         ]
