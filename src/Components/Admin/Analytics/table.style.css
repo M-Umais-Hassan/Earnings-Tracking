@@ -14,8 +14,11 @@ td {
   padding: 10px;
 }
 
-td a {
+.table__scroll td a {
   font-weight: bold;
+  background-color: var(--primary);
+  padding: 5px 10px;
+  color: var(--txtWhite);
 }
 
 th {

@@ -11,6 +11,7 @@ const Table = ({ allUsers }) => {
                     <tr>
                         <th><span>Name</span></th>
                         <th>Email</th>
+                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,8 +19,9 @@ const Table = ({ allUsers }) => {
                         return (
                             !user.admin ?
                             <tr key={user.id}>
-                                <td><Link to={`/detail/${user.id}`}>{user.name && user.name}</Link></td>
+                                <td>{user.name && user.name}</td>
                                 <td>{user.email && user.email}</td>
+                                <td><Link to={`/detail/${user.id}`}>View</Link></td>
                             </tr> : null
                         )
                     })}
