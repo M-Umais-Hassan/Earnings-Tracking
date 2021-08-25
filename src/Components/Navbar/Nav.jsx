@@ -23,7 +23,7 @@ const Nav = ({ heading }) => {
     return (
         <div className="nav">
             <div id="logo">
-                <h1>{heading}</h1>
+                <Link to="/dashboard"><h1>{heading}</h1></Link>
             </div>
             <div id="menu__btn" onClick={() => setMenu(!menu)}>
                 <span>{userData.name}</span>
