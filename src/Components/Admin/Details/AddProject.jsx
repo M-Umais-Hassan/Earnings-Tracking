@@ -10,6 +10,7 @@ const AddProject = ({ workerId }) => {
     const [project, setProject] = useState('');
     const [earning, setEarning] = useState(0);
     const [error, setError] = useState('');
+    const [disabled, setDisabled] = useState(false);
 
     const clearFields = () => {
         setProject('');
@@ -18,16 +19,32 @@ const AddProject = ({ workerId }) => {
 
     const addProject = (project, earning) => {
         if(userData.admin && project && earning && earning !== 0) {
+            setDisabled(true);
             const projectsRef = db.ref(`Projects/${workerId}`);
+            const userRef = db.ref(`Users/${workerId}`);
             var newData={
                 name: project, 
                 earning: earning
             }
-            projectsRef.push(newData).then(() => {
+            projectsRef.push(newData).then(async() => {
+                let totalEarning = 0;
+                await userRef.on('value', snapshot => {
+                    if(snapshot.hasChild('earning')){
+                        totalEarning = parseInt(earning) + parseInt(snapshot.val().earning)
+                    }
+                    else {
+                        totalEarning = parseInt(earning)
+                    }
+                })
+                await userRef.update({
+                    earning: totalEarning
+                })
                 alert('Project Added')
                 clearFields();
+                setDisabled(false);
             }).catch(() => {
                 alert('Error while adding project')
+                setDisabled(false);
             });
         }
         else {
@@ -50,7 +67,7 @@ const AddProject = ({ workerId }) => {
                     <div>
                         <input type="number" placeholder="Project Earnings" value={earning} onChange={(e) => setEarning(e.target.value)} />
                     </div>
-                    <button id="signin" onClick={() => addProject(project, earning)}>Submit</button>
+                    <button id="signin" onClick={() => addProject(project, earning)} disabled={disabled}>Submit</button>
                 </div>
             </div>
         </div>

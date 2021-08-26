@@ -21,7 +21,7 @@ const Form = () => {
     const getDate = () => {
         var date = new Date();
         return date.toString();
-      }
+    }
 
     const clearField = () => {
         setError('');

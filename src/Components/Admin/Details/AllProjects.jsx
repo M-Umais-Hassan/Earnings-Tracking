@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import './allprojects.style.css';
 
 // firebase
 import { db } from '../../../firebase';
+import userContext from '../../../Context/userContext';
 
 const AllProjects = ({ workerId }) => {
     const [allProjects, setAllProjects] = useState([]);
+    const { userData } = useContext(userContext);
 
     useEffect(() => {
         const ref = db.ref(`Projects`);
@@ -35,10 +37,33 @@ const AllProjects = ({ workerId }) => {
         })
     }, [workerId]);
 
-    const deleteProject = (id) => {
-        const projectRef = db.ref(`Projects/${workerId}/${id}`);
-        projectRef.remove();
-    }
+    // const deleteProject = (id) => {
+    //     const projectRef = db.ref(`Projects/${workerId}/${id}`);
+    //     const rootRef = db.ref(`Users`);
+    //     const userRef = db.ref(`Users/${workerId}`);
+    //     projectRef.on('value', snapshot => {
+    //         let deletedEarning = snapshot.val().earning;
+    //         rootRef.on('value', snapshot => {
+    //             if(snapshot.hasChild(workerId)) {
+    //                 userRef.on('value', async snapshot => {
+    //                     if(snapshot.val() && snapshot.val().earning) {
+    //                         let earning = snapshot.val().earning - deletedEarning;
+    //                         console.log(earning);
+    //                         if(earning) {
+    //                             await userRef.update({
+    //                                 earning: earning
+    //                             })
+    //                             await projectRef.remove();
+    //                         }
+    //                     }
+    //                     else {
+    //                         await projectRef.remove();
+    //                     }
+    //                 })
+    //             }
+    //         })
+    //     })
+    // }
 
     return (
         <div className="table__scroll">
@@ -48,7 +73,7 @@ const AllProjects = ({ workerId }) => {
                         <th><span>Project Id</span></th>
                         <th>Project Name</th>
                         <th>Earnings</th>
-                        <th>Delete</th>
+                        {/* <th>Delete</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +83,7 @@ const AllProjects = ({ workerId }) => {
                                 <td>{project.id && project.id}</td>
                                 <td>{project.projectName && project.projectName}</td>
                                 <td>{project.earning && project.earning}</td>
-                                <td><button className="delete__btn" onClick={() => deleteProject(project.id)}>Delete</button></td>
+                                {/* <td><button className="delete__btn" onClick={() => deleteProject(project.id)}>Delete</button></td> */}
                             </tr> 
                         )
                     })}

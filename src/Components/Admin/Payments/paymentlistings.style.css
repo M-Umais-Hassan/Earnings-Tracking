@@ -1,0 +1,16 @@
+.not__paid__btn,
+.paid__btn {
+  padding: 5px 10px;
+  color: var(--txtWhite);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.not__paid__btn {
+  background-color: red;
+  cursor: pointer;
+}
+
+.paid__btn {
+  background-color: green;
+}

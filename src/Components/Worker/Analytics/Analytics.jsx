@@ -17,19 +17,27 @@ const Analytics = ({ setLoading }) => {
     useEffect(() => {
         if(userData.id){
             setLoading(true);
-            let count = 0;
             const ref = db.ref('Projects');
             const projectRef = db.ref(`Projects/${userData.id}`);
+            const userRef = db.ref(`Users/${userData.id}`);
             ref.on('value', snapshot => {
                 if(snapshot.hasChild(userData.id)) {
                     projectRef.on('value', snapshot => {
-                        setProjectCount(Object.values(snapshot.val()).length);
-                        for(let i=0; i<Object.values(snapshot.val()).length; i++) {
-                            count += parseInt(Object.values(snapshot.val())[i].earning);
-                            setEarningsCount(count);
+                        if(snapshot.val() && Object.values(snapshot.val()).length != null){
+                            setProjectCount(Object.values(snapshot.val()).length);
+                        }else {
+                            setProjectCount(0)
                         }
-                        setLoading(false);
                     })
+                }
+                setLoading(false);
+            })
+            userRef.on('value', snapshot => {
+                if(snapshot.hasChild('earning')) {
+                    setEarningsCount(snapshot.val().earning);
+                }
+                else {
+                    setEarningsCount(0);
                 }
             })
         }
@@ -39,7 +47,7 @@ const Analytics = ({ setLoading }) => {
         <div className="section">
             <div className="analytics__flex">
                 <Count label={'Projects'} value={projectCount ? projectCount : 0} />
-                <Count  label={'Earnings'} value={earningsCount ? earningsCount : 0} isAmount />
+                <Count  label={'Balance'} value={earningsCount ? earningsCount : 0} isAmount />
             </div>
         </div>
     )

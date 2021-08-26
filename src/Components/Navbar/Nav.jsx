@@ -34,7 +34,11 @@ const Nav = ({ heading }) => {
                     ? <li><Link to="/profile">Profile</Link></li> 
                     : null
                 }
-                <div id="line"></div>
+                {userData && userData.admin
+                    ? <li><Link to="/payment">Payments</Link></li> 
+                    : null
+                }
+                {/* <div id="line"></div> */}
                 <li onClick={handleSignout}>Logout</li>
             </ul>
         </div>

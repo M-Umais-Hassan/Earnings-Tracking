@@ -13,7 +13,7 @@ const Loading = ({ width, hegiht }) => {
         <div style={centerPosition}>
             <Loader
                 type="Oval"
-                color="#6a5acd"
+                color="#4cb050"
                 height={hegiht}
                 width={width}
             />
