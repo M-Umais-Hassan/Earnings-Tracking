@@ -62,22 +62,26 @@ const Form = () => {
     }
 
     useEffect(() => {
-        console.log('entered')
+        const rootRef = db.ref('Users');
         const ref = db.ref(`Users/${auth.currentUser.uid}`);
-        ref.on('value', snapshot => {
-            setUserData(snapshot.val());
-            if(snapshot.val()) {
-                if(snapshot.val().firstName) {
-                    setFirstName(snapshot.val().firstName)
-                }
-                if(snapshot.val().lastName) {
-                    setLastName(snapshot.val().lastName)
-                }
-                if(snapshot.val().phone) {
-                    setPhone(snapshot.val().phone)
-                }
+        rootRef.on('value', snapshot => {
+            if(snapshot.hasChild(auth.currentUser.uid)) {
+                ref.on('value', snapshot => {
+                    setUserData(snapshot.val());
+                    if(snapshot.val()) {
+                        if(snapshot.val().firstName) {
+                            setFirstName(snapshot.val().firstName)
+                        }
+                        if(snapshot.val().lastName) {
+                            setLastName(snapshot.val().lastName)
+                        }
+                        if(snapshot.val().phone) {
+                            setPhone(snapshot.val().phone)
+                        }
+                    }
+                });
             }
-        });
+        })
     }, []);
 
     return (

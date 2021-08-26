@@ -16,18 +16,23 @@ function App() {
     auth.onAuthStateChanged((user) => {
       if(user) {
         setIsAuthenticated(true);
+        const ref = db.ref('Users');
         const userRef = db.ref(`Users/${user.uid}`);
-        userRef.on('value', (snapshot) => {
-          setUserData(snapshot.val());
-          console.log('User data changed')
-          setLoading(false);
-          if(snapshot.val().admin && snapshot.val().admin === true) {
-            setIsAdmin(true);
-          }
-          else {
-            setIsAdmin(false);
+        ref.on('value', snapshot => {
+          if(snapshot.hasChild(user.uid)) {
+            userRef.on('value', (snapshot) => {
+              setUserData(snapshot.val());
+              console.log('User data changed')
+              if(snapshot.val().admin && snapshot.val().admin === true) {
+                setIsAdmin(true);
+              }
+              else {
+                setIsAdmin(false);
+              }
+            });
           }
         });
+        setLoading(false);
       }
       else {
         setIsAuthenticated(false);

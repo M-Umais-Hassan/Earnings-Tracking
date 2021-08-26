@@ -20,21 +20,25 @@ const AdminDashboard = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        console.log('admin dashboard useeffect')
         let count = 0;
         let wCount = 0;
         setLoading(true);
         const usersRef = db.ref('Users');
-        usersRef.on('value', async snapshot => {
+        usersRef.on('value', snapshot => {
             for(let i=0; i<snapshot.numChildren(); i++) {
                 if(!(Object.values(snapshot.val()))[i].admin) {
                     const uid = Object.values(snapshot.val())[i].id;
                     wCount++;
-                    const projectsRef = await db.ref(`Projects/${uid}`);
-                    await projectsRef.on('value', snapshot => {
-                        if(snapshot.val()){
-                            count += Object.values(snapshot.val()).length;
-                            setProjectCount(count);
+                    const ref = db.ref(`Projects`);
+                    const projectsRef = db.ref(`Projects/${uid}`);
+                    ref.on('value', snapshot => {
+                        if(snapshot.hasChild(uid)) {
+                            projectsRef.on('value', snapshot => {
+                                if(snapshot.val()){
+                                    count += Object.values(snapshot.val()).length;
+                                    setProjectCount(count);
+                                }
+                            })
                         }
                     })
                 }
@@ -43,7 +47,7 @@ const AdminDashboard = () => {
             setAllUsers(Object.values(snapshot.val()));
             setLoading(false);
         });
-    }, [userData]);
+    }, []);
     
     return (
         <div>

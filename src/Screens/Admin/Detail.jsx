@@ -17,13 +17,20 @@ const Detail = () => {
     const { userData, setUserData } = useContext(userContext);
     const { workerId } = useParams();
     const [workerData, setWorkerData] = useState({});
+    
     useEffect(() => {
         console.log('Detail useeffect')
         const ref = db.ref(`Users/${workerId}`);
-        ref.on('value', snapshot => {
-            setWorkerData(snapshot.val());
-        });
-    }, [userData]);
+        const userRef = db.ref('Users');
+        userRef.on('value', snapshot => {
+            if(snapshot.hasChild(workerId)) {
+                ref.on('value', snapshot => {
+                    setWorkerData(snapshot.val());
+                });
+            }
+        })
+    }, []);
+
     return (
         <div>
             <Nav heading={'Admin Panel'} />
