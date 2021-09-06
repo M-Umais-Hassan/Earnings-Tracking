@@ -5,6 +5,8 @@ import Routes from './Routes/Routes';
 // context
 import UserContext from './Context/userContext';
 
+// Added a comment to make changes only
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState({});
